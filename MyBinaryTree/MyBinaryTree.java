@@ -260,8 +260,9 @@ public class MyBinaryTree {
             System.out.print(node.val + " ");
         }
     }*/
-
     public List<List<TreeNode>> levelOrder(TreeNode root) {
+        int index = 0;
+        HashMap<TreeNode, Integer> map = new HashMap();
         List<List<TreeNode>> list = new ArrayList<>();
         if(root == null) {
             return null;
@@ -305,7 +306,7 @@ public class MyBinaryTree {
     }
 
 
-    public Stack<TreeNode> path = new Stack<>();;
+    public Stack<TreeNode> path = new Stack<>();
 
 
     public boolean getPath (TreeNode root, TreeNode node, Stack<TreeNode> stack) {
@@ -336,7 +337,6 @@ public class MyBinaryTree {
     public void preorderWithoutRecursion (TreeNode root) {
         if(root == null) return;
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.push(root);
         TreeNode cur = root;
         while (cur != null || !stack.empty()) {
             while (cur != null) {
