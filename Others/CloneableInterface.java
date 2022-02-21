@@ -34,7 +34,7 @@ class Person implements Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         Person temp = (Person) super.clone();
-        temp.money = (Money) this.money.clone();
+        //temp.money = (Money) this.money.clone();
         return temp;
         //return super.clone();
     }

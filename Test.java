@@ -58,10 +58,10 @@ class Alg1 {
 class A {
 
 }
-class Person extends A{
+class Person1 extends A{
 
 }
-class Student extends Person {
+class Student extends Person1 {
 
 }
 class C extends Student {
@@ -70,16 +70,16 @@ class C extends Student {
 
 public class Test {
     public static void main(String[] args) {
-        ArrayList<? super Person> arrayList1 = new ArrayList<Person>();
+        ArrayList<? super Person1> arrayList1 = new ArrayList<Person1>();
 
         //ArrayList<? super Person> arrayList2 = new ArrayList<Student>();
-        arrayList1.add(new Person());
+        arrayList1.add(new Person1());
         //arrayList1.add(new A());
         arrayList1.add(new Student());
         arrayList1.add(new C());
 
-        ArrayList<? super Person> arrayList2 = new ArrayList<A>();
-        arrayList2.add(new Person());
+        ArrayList<? super Person1> arrayList2 = new ArrayList<A>();
+        arrayList2.add(new Person1());
         arrayList2.add(new Student());
 
         //Person person = arrayList2.get(0);//why????
