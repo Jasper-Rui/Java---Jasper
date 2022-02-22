@@ -11,6 +11,80 @@ import java.util.Scanner;
 
 public class MyMap {
 
+    public static void main(String[] args) {
+        String a = "a";
+        String b = "b";
+        String c = "c";
+        System.out.println(a.compareTo(b));
+        System.out.println(c.compareTo(b));
+
+        PriorityQueue<String> priorityQueue = new PriorityQueue<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        priorityQueue.add(a);
+        priorityQueue.add(b);
+        priorityQueue.add(c);
+        System.out.println(priorityQueue.peek());
+    }
+
+    public List<String> topKFrequent(String[] words, int k) {
+
+        //1.
+        HashMap<String, Integer> map = new HashMap<>();
+        for(String word : words) {
+            if(map.containsKey(word)) {
+                map.put(word, map.get(word) + 1);
+                continue;
+            }
+
+            map.put(word, 1);
+        }
+
+        //2.
+        PriorityQueue<Map.Entry<String, Integer>> minHeap = new PriorityQueue<>(k, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue().compareTo(o2.getValue()) == 0) {
+                    return o2.getKey().compareTo(o1.getKey());
+                }
+                return o1.getValue() - o2.getValue();
+            }
+        });
+
+
+        //3.
+        for(Map.Entry<String, Integer> entry : map.entrySet()) {
+            if(minHeap.size() < k) {
+                minHeap.offer(entry);
+            }
+            else{
+                if(minHeap.peek().getValue().compareTo(entry.getValue()) == 0) {
+                    if(minHeap.peek().getKey().compareTo(entry.getKey()) > 0) {
+                        minHeap.poll();
+                        minHeap.offer(entry);
+                    }
+                }
+                else {
+                    if(minHeap.peek().getValue().compareTo(entry.getValue()) < 0){
+                        minHeap.poll();
+                        minHeap.offer(entry);
+                    }
+                }
+            }
+        }
+
+        List<String> ret = new ArrayList<>();
+        for(int i = 0; i < k; i++) {
+            Map.Entry<String, Integer> top = minHeap.poll();
+            ret.add(top.getKey());
+        }
+        Collections.reverse(ret);
+        return ret;
+    }
+
 
 
     public static Map<Integer, Integer> func1(int[] array) {
@@ -49,9 +123,16 @@ public class MyMap {
     }
 
 
+    public static void main11(String[] args) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        priorityQueue.add(1);
+        priorityQueue.add(2);
+        priorityQueue.add(3);
+        System.out.println(priorityQueue.peek());
 
+    }
 
-   public static void main(String[] args) {
+   public static void main9(String[] args) {
         Set<Integer> set = new HashSet<>();
         set.add(1);
         set.add(2);
