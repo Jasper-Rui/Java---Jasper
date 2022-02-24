@@ -142,14 +142,15 @@ public class MyBinarySearchTree {
     }
 
 
-
     public static void main(String[] args) {
+
         int[] array = {10,8,19,3,9,4,7};
         MyBinarySearchTree binarySearchTree = new MyBinarySearchTree();
         for (int i = 0; i < array.length; i++) {
             binarySearchTree.insert(array[i]);
         }
         binarySearchTree.inOrder(binarySearchTree.root);
+
         System.out.println(binarySearchTree.insert(3));
         binarySearchTree.remove(7);
         System.out.println();
