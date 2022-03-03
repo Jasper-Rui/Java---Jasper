@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -7,8 +9,10 @@
  * Description:
  */
 
+
 class Money implements Cloneable{
     public double money = 12.5;
+    ArrayList
 
     @Override
     protected Object clone() throws CloneNotSupportedException {

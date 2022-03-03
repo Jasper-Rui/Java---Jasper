@@ -24,7 +24,7 @@ class StackMine {
     public void push (int val) {
         if(isFUll()) {
             //expand
-            Arrays.copyOf(this.elem, 2 * this.elem.length);
+            this.elem = Arrays.copyOf(this.elem, 2 * this.elem.length);
         }
         this.elem[this.usedSize++] = val;
     }
